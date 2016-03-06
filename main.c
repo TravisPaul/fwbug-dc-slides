@@ -12,7 +12,7 @@
 #define COLS 80
 #define TITLE_MAX (COLS - 2) - 5
 
-#define SLIDES 13
+#define SLIDES 12
 
 WINDOW *win;
 
@@ -105,13 +105,46 @@ slide1(void) {
 
 static void
 slide2(void) {
-    attron(A_BOLD);
-    center(2, "Fort Wayne BSD User Group");
-    move(4, 4);
-    addstr("ABOUT");
-    attroff(A_BOLD);
-    move(5, 4);
-    addstr("Talk about fwbug.org, github/FWBUG, etc...");
+    move(3, 6);
+    attron(A_UNDERLINE);
+    addstr("Why create a Fort Wayne BSD User Group?");
+    attroff(A_UNDERLINE);
+    move(4, 8);
+    addstr("* 1 more local recurring tech event per month!");
+    move(5, 8);
+    addstr("* Get more people exposed to the unixes");
+    move(6, 8);
+    addstr("* Local support network for new BSD users");
+    move(7, 8);
+    addstr("* Study groups for BSD Certifications");
+
+    move(9, 6);
+    attron(A_UNDERLINE);
+    addstr("Ideas for future Meetups:");
+    attroff(A_UNDERLINE);
+    move(10, 8);
+    addstr("* Demonstrating OpenBSD's exploit mitigations");
+    move(11, 8);
+    addstr("* Overview of ZFS or Bhyve on FreeBSD");
+    move(12, 8);
+    addstr("* Homebrew NetBSD router");
+    move(13, 8);
+    addstr("* Updates to this presentation");
+
+    move(15, 6);
+    attron(A_UNDERLINE);
+    addstr("Needs:");
+    attroff(A_UNDERLINE);
+    move(16, 8);
+    addstr("* COLO sponsor to host server resources for:");
+    move(17, 10);
+    addstr("- Source Mirror - CVS (Net/Open), Subversion(Free)");
+    move(18, 10);
+    addstr("- Binary/Media Mirrors");
+    move(19, 10);
+    addstr("- CI Build hosts (Jenkins)");
+    move(20, 10);
+    addstr("- Misc services AFL, packaging, etc");
 }
 
 static void
@@ -218,7 +251,7 @@ slide4(void) {
     move(4, 12);
     addstr("The Sega Dreamcast is a home video game console");
     move(5, 12);
-    addstr("released in 1998 SEGA and was discontinued in 2001.");
+    addstr("released in 1998 by SEGA and was discontinued in 2001.");
 
     move(7, 12);
     addstr("Official games continued to be released until 2007.");
@@ -568,8 +601,45 @@ slide9 (void) {
 }
 
 static void
-none (void) {
-    center(ROWS/2, "...");
+slide10 (void) {
+    move(10, 6);
+    attron(A_UNDERLINE);
+    addstr("Future Improvemnts");
+    attroff(A_UNDERLINE);
+    move(11, 8);
+    addstr("* Swap over NFS");
+    move(12, 8);
+    addstr("* Read/write VMU memory and screen");
+    move(13, 8);
+    addstr("* Use mouse in terminal");
+    move(14, 8);
+    addstr("* Use puru puru pack for terminal bell");
+    move(15, 8);
+    addstr("* kernel ricing - trim out uneeded features");
+    move(16, 8);
+    addstr("* Read and use controller input");
+    move(17, 8);
+    addstr("* Get X11 Working");
+    move(18, 8);
+    addstr("* Netboot kernel via IPSlave");
+    move(19, 8);
+    addstr("* Audio input/output");
+}
+
+static void
+slide11 (void) {
+    attron(COLOR_PAIR(2));  
+    center(10, " ________             __        __");
+    center(11, "/_  __/ /  ___ ____  / /__ ___ / /");
+    center(12, " / / / _ \\/ _ `/ _ \\/  '_/(_-</_/ ");
+    center(13, "/_/ /_//_/\\_,_/_//_/_/\\_\\/___(_)  ");
+    attroff(COLOR_PAIR(2));  
+
+    attron(A_BOLD);                                  
+    center(15, "Github: TravisPaul");
+    center(16, "Email: Tr@visPaul.me");
+    center(17, "IRC (Freenode): tpaul");
+    attroff(A_BOLD);      
 }
 
 int
@@ -621,14 +691,11 @@ main (int argc, char **argv) {
     strcpy(slides[9].title, "Customizing the build");
     slides[9].slide = slide9;
 
-    strcpy(slides[10].title, "Challenges");
-    slides[10].slide = none;
+    strcpy(slides[10].title, "Future Improvements");
+    slides[10].slide = slide10;
 
-    strcpy(slides[11].title, "Future Improvements");
-    slides[11].slide = none;
-
-    strcpy(slides[12].title, "Demos");
-    slides[12].slide = none;
+    strcpy(slides[11].title, "Outro");
+    slides[11].slide = slide11;
 
     if (argc > 1) {
         current = (int) strtol(argv[1], (char **)NULL, 10) - 1;
@@ -669,7 +736,6 @@ main (int argc, char **argv) {
             skip = 0;
         }
     }   
- 
     endwin();
     return 0;
 }
