@@ -1,6 +1,6 @@
 # NetBSD on Dreamcast
 
-This is a simple curses based slide deck that I will be presenting on a SEGA Dreamcast at [FWBUG's first Meetup](http://www.meetup.com/Fort-Wayne-BSD-User-Group/events/228902553/). 
+A curses based slide deck that I will be presenting on a SEGA Dreamcast running [NetBSD 7](http://wiki.netbsd.org/ports/dreamcast/) at the first Fort Wayne BSD User Group [Meetup](http://www.meetup.com/Fort-Wayne-BSD-User-Group/events/228902553/). 
 
 ![slides](slides.gif?raw=true "Slides")
 
