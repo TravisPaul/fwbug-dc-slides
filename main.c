@@ -1,12 +1,7 @@
 #include <curses.h>
-
-#include <sys/cdefs.h>
-#include <err.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
- 
+
 // Dreamcast console is 30 x 80
 #define ROWS 30
 #define COLS 80
@@ -105,45 +100,57 @@ slide1(void) {
 
 static void
 slide2(void) {
-    move(3, 6);
+
+    attron(COLOR_PAIR(2));
+    center(2, " ______   __     __     ______     __  __     ______    ");
+    center(3, "/\\  ___\\ /\\ \\  _ \\ \\   /\\  =  \\   /\\ \\/\\ \\   /\\  ___\\   ");
+    center(4, "\\ \\  __\\ \\ \\ \\/ \".\\ \\  \\ \\  __<   \\ \\ \\_\\ \\  \\ \\ \\__ \\  ");
+    center(5, " \\ \\_\\    \\ \\__/\".~\\_\\  \\ \\_____\\  \\ \\_____\\  \\ \\_____\\ ");
+    center(6, "  \\/_/     \\/_/   \\/_/   \\/_____/   \\/_____/   \\/_____/ ");
+    attroff(COLOR_PAIR(2));
+
+
+    move(8, 6);
     attron(A_UNDERLINE);
     addstr("Why create a Fort Wayne BSD User Group?");
     attroff(A_UNDERLINE);
-    move(4, 8);
-    addstr("* 1 more local recurring tech event per month!");
-    move(5, 8);
-    addstr("* Get more people exposed to the unixes");
-    move(6, 8);
+    move(9, 8);
+    addstr("* Why not have one more local tech Meetup?");
+    move(10, 8);
+    addstr("* Get more people exposed to the Unixes");
+    move(11, 8);
     addstr("* Local support network for new BSD users");
-    move(7, 8);
+    move(12, 8);
     addstr("* Study groups for BSD Certifications");
 
-    move(9, 6);
+    move(14, 6);
     attron(A_UNDERLINE);
     addstr("Ideas for future Meetups:");
     attroff(A_UNDERLINE);
-    move(10, 8);
-    addstr("* Demonstrating OpenBSD's exploit mitigations");
-    move(11, 8);
+    move(15, 8);
+    addstr("* Finding and fixing exploits with AFL");
+    move(16, 8);
     addstr("* Overview of ZFS or Bhyve on FreeBSD");
-    move(12, 8);
+    move(17, 8);
+    addstr("* Demonstrating OpenBSD's exploit mitigations");
+    move(18, 8);
     addstr("* Homebrew NetBSD router");
-    move(13, 8);
+    move(19, 8);
     addstr("* Updates to this presentation");
 
-    move(15, 6);
+    move(21, 6);
     attron(A_UNDERLINE);
-    addstr("Needs:");
+    addstr("FWBUG needs/wants:");
     attroff(A_UNDERLINE);
-    move(16, 8);
+    move(22, 8);
     addstr("* COLO sponsor to host server resources for:");
-    move(17, 10);
-    addstr("- Source Mirror - CVS (Net/Open), Subversion(Free)");
-    move(18, 10);
+    move(23, 10);
+    addstr("- Source Mirror - CVS (Net/Open), Subversion (Free)");
+    move(24, 10);
     addstr("- Binary/Media Mirrors");
-    move(19, 10);
+    move(25, 10);
     addstr("- CI Build hosts (Jenkins)");
-    move(20, 10);
+    move(26, 10);
     addstr("- Misc services AFL, packaging, etc");
 }
 
@@ -211,7 +218,7 @@ slide3b (void) {
 
     attron(A_UNDERLINE);
     move(15, 6);
-    addstr("Some notable Features:");
+    addstr("Some notable features:");
     attroff(A_UNDERLINE);
     move(16, 8);
     addstr("* Kernel Lua Bindings - Script kernel space (Firewall, GPIO, etc)");
@@ -482,7 +489,7 @@ slide7(void) {
     addstr("# build.sh -O /tmp/obj -T /tmp/tools -j 8 -U -m dreamcast sets");
     attroff(COLOR_PAIR(4));
 
-    center(25, "A complete release build takes about XXmin on a dual socket");
+    center(25, "A full build starting with tools takes about 50min on a dual socket");
     center(26, "2.3Ghz Quad-Core 2350 AMD Opteron Processor with a SanDisk SSD");
 
     attron(A_BOLD);
@@ -502,7 +509,7 @@ slide8 (void) {
     attron(COLOR_PAIR(4));
     addstr("# BIN_DIR=/tmp/obj/releasedir/dreamcast/binary");
     move(6, 4);
-    addstr("# tar -czf $BIN_DIR/sets/opt.tgz /home/opt");
+    addstr("# tar -czf $BIN_DIR/sets/opt.tgz /home/tpaul/opt");
     attroff(COLOR_PAIR(4));
 
     move(8, 2);
@@ -611,7 +618,7 @@ slide10 (void) {
     move(12, 8);
     addstr("* Read/write VMU memory and screen");
     move(13, 8);
-    addstr("* Use mouse in terminal");
+    addstr("* Use mouse in terminal (update console drivers)");
     move(14, 8);
     addstr("* Use puru puru pack for terminal bell");
     move(15, 8);
@@ -624,6 +631,14 @@ slide10 (void) {
     addstr("* Netboot kernel via IPSlave");
     move(19, 8);
     addstr("* Audio input/output");
+    move(20, 8);
+    addstr("* dc-burn-netbsd improvements");
+    move(21, 8);
+    addstr("* Get current branch working");
+    move(22, 8);
+    addstr("* Recover from IO errors");
+
+
 }
 
 static void
@@ -638,7 +653,7 @@ slide11 (void) {
     attron(A_BOLD);                                  
     center(15, "Github: TravisPaul");
     center(16, "Email: Tr@visPaul.me");
-    center(17, "IRC (Freenode): tpaul");
+    center(17, "#netbsd/#pkgsrc: tpaul");
     attroff(A_BOLD);      
 }
 
