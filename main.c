@@ -622,7 +622,7 @@ slide10 (void) {
     move(14, 8);
     addstr("* Use puru puru pack for terminal bell");
     move(15, 8);
-    addstr("* kernel ricing - trim out uneeded features");
+    addstr("* kernel tuning - trim out uneeded features");
     move(16, 8);
     addstr("* Read and use controller input");
     move(17, 8);
